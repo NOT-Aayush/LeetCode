@@ -1,41 +1,34 @@
 class Solution {
-    static void makezeros(int[][] matrix, int row , int col){
 
-            //make row
-            for (int i=0;i<matrix[0].length;i++){
-                matrix[row][i] = 0;
-            }
-            //make cols
-            for (int i=0;i<matrix.length;i++){
-                matrix[i][col] = 0;
-            }         
-        
-    }
-    static void setter(int[][] matrix,int[][] buff){
-        int row = matrix.length;
-        int col = matrix[0].length;
-        for (int i=0;i<row;i++){
-            for (int j=0;j<col;j++){
-                if (buff[i][j]==1){
-                    makezeros(matrix,i,j);
+    static void setter(int[][] matrix,int[] rows,int[] cols){
+        for (int i=0;i<rows.length;i++){
+            if ( rows[i] == 1){
+                for (int j=0;j<matrix[0].length;j++){
+                    matrix[i][j] = 0;
                 }
+            }
+        }
+        for (int j=0;j<cols.length;j++){
+            if ( cols[j] ==1){
+                for (int i=0;i<matrix.length;i++){
+                    matrix[i][j] = 0;
+                }  
             }
         }
     }
     public void setZeroes(int[][] matrix) {
         int row = matrix.length;
         int col = matrix[0].length;
-        int[][] buff = new int[row][col];
+        int[] rows = new int[row];
+        int[] cols = new int[col];
         for (int i=0;i<row;i++){
             for (int j=0;j<col;j++){
                 if (matrix[i][j]== 0){
-                    buff[i][j] =1;
-                }
-                else{
-                    buff[i][j] = 0;
+                    rows[i]=1;
+                    cols[j]=1;
                 }
             }
         }
-        setter(matrix,buff);
+        setter(matrix,rows,cols);
     }
 }
