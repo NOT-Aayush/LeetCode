@@ -2,19 +2,13 @@ class Solution {
 
     static void setter(int[][] matrix,int[] rows,int[] cols){
         for (int i=0;i<rows.length;i++){
-            if ( rows[i] == 1){
-                for (int j=0;j<matrix[0].length;j++){
+            for (int j=0;j<matrix[0].length;j++){
+                if ( rows[i] == 1 || cols[j] == 1){
                     matrix[i][j] = 0;
                 }
             }
         }
-        for (int j=0;j<cols.length;j++){
-            if ( cols[j] ==1){
-                for (int i=0;i<matrix.length;i++){
-                    matrix[i][j] = 0;
-                }  
-            }
-        }
+
     }
     public void setZeroes(int[][] matrix) {
         int row = matrix.length;
