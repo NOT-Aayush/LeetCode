@@ -9,10 +9,10 @@ class Solution {
                 return mid;
             }
             else if (nums[mid] > target){
-                i++;
+                j = mid-1;
             }
             else{
-                j++;
+                i = mid+1;
             }
         }
         return -1;
