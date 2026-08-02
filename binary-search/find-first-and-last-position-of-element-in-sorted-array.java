@@ -5,7 +5,7 @@ class Solution {
         int[] len = new int[]{-1,-1};
         while (l <= r){
             int mid = l + (r-l)/2;
-            if (nums[mid] == target && nums[mid+1] != target){
+            if (nums[mid] == target && mid<nums.length && nums[mid+1] != target){
                 len[1]=mid;
                 r = mid-1;
             }
