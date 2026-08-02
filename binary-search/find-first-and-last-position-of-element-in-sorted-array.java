@@ -5,20 +5,13 @@ class Solution {
         int[] len = new int[]{-1,-1};
         while (l <= r){
             int mid = l + (r-l)/2;
-            if (nums[mid] == target){
-                if (nums[mid+1]>target){
-                    len[1]=mid;
-                    while(nums[mid] ==target){
-                        len[0]=mid--;
-                    }
-                }
-                else{
-                    len[0]=mid;
-                    while(nums[mid]==target){
-                        len[1]=mid++;
-                    }
-                }
-                return len;
+            if (nums[mid] == target && nums[mid+1] != target){
+                len[1]=mid;
+                r = mid-1;
+            }
+            else if (nums[mid]==target && nums[mid-1] != target){
+                len[0]=mid;
+                l = mid+1;
             }
 
             else if(nums[mid]>target){
