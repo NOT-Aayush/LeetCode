@@ -15,6 +15,9 @@ class Solution {
             else if (mid+1 <nums.length && nums[mid] < nums[mid+1]){
                 left = mid+1;
             }
+            else{
+                return mid;
+            }
         }
         return left;
     }
