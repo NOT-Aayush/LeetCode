@@ -10,19 +10,14 @@
  */
 class Solution {
     public ListNode reverseList(ListNode head) {
-        ArrayList<Integer> arr = new ArrayList<>();
         ListNode curr = head;
+        ListNode prev = null;
         while (curr!=null){
-            arr.add(curr.val);
-            curr = curr.next;
+            ListNode temp = curr.next;
+            curr.next=prev;
+            prev=curr;
+            curr=temp;
         }
-        curr = head;
-        int i=arr.size()-1;
-        while (curr!=null){
-            curr.val = arr.get(i);
-            i--;
-            curr = curr.next;
-        }
-        return head;
+        return prev;
     }
 }
