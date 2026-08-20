@@ -10,7 +10,6 @@
  */
 class Solution {
     public ListNode oddEvenList(ListNode head) {
-        // odd and even 
         if (head == null || head.next == null) {
             return head;
         }
@@ -19,8 +18,6 @@ class Solution {
         ListNode even = head.next;
 
         while(even!=null && even.next!=null){
-            //tempodd = odd.next;
-            //tempeven = even;
             odd.next = odd.next.next;
             even.next = even.next.next;
             odd =odd.next;
