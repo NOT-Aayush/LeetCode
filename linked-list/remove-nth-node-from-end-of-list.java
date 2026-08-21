@@ -19,11 +19,15 @@ class Solution {
             len++;
             cnt=cnt.next;
         }
-        int count =1;
+        int node = len-n;
+        if (node == 0) {
+            return head.next;
+        }
+        int count =0;
         ListNode prev = new ListNode();
         ListNode curr = head;
         while(curr!=null){
-            if(count == len-n+1){
+            if(count == node){
                 prev.next = curr.next;
                 return head;
             }
