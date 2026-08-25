@@ -1,26 +1,45 @@
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
 class Solution {
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        ListNode head = new ListNode(0);
-        ListNode curr = head;
-        int carry = 0;
-        
-        while (l1 != null || l2 != null || carry != 0) {
-            int sum = carry; 
-            
-            if (l1 != null) {
-                sum += l1.val;
-                l1 = l1.next;
-            }
-            if (l2 != null) {
-                sum += l2.val;
-                l2 = l2.next;
-            }
-            
-            carry = sum / 10;
-            curr.next = new ListNode(sum % 10);
+        StringBuilder s1 = new StringBuilder();
+        StringBuilder s2 = new StringBuilder();
+        ListNode curr = l1;
+        while(curr!=null){
+            s1.append((int)curr.val);
+            curr=curr.next;
+        }
+        s1.reverse();
+        curr = l2;
+        while(curr!=null){
+            s2.append((int)curr.val);
+            curr=curr.next;
+        }
+        s2.reverse();
+        int n1 = Integer.parseInt(s1.toString());
+        int n2 = Integer.parseInt(s2.toString());
+        int n3 = n1+n2;
+        StringBuilder s3 = new StringBuilder(Integer.toString(n3));
+        s3.reverse();
+        int n = s3.length();
+        ListNode head = new ListNode();
+        head.val = s3.charAt(0) - '0';
+        curr = head;
+        for (int i=1;i<n;i++){
+            ListNode temp = new ListNode();
+            temp.val = s3.charAt(i) - '0';
+            curr.next = temp;
             curr = curr.next;
         }
-        
-        return head.next;
+        curr.next=null;
+        return head;
     }
 }
