@@ -8,40 +8,26 @@
  *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
  * }
  */
-import java.math.BigInteger;
 class Solution {
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        StringBuilder s1 = new StringBuilder();
-        StringBuilder s2 = new StringBuilder();
-        ListNode curr = l1;
-        while(curr!=null){
-            s1.append((int)curr.val);
-            curr=curr.next;
-        }
-        s1.reverse();
-        curr = l2;
-        while(curr!=null){
-            s2.append((int)curr.val);
-            curr=curr.next;
-        }
-        s2.reverse();
-        BigInteger n1 = new BigInteger(s1.toString());
-        BigInteger n2 = new BigInteger(s2.toString());
+        int carry =0;
+        ListNode head = new ListNode(0);
+        ListNode curr = head;
+        while (l1!=null || l2!=null || carry !=0){
+            int sum = carry;
 
-        BigInteger n3 = n1.add(n2);
-        StringBuilder s3 = new StringBuilder(n3.toString());
-        s3.reverse();
-        int n = s3.length();
-        ListNode head = new ListNode();
-        head.val = s3.charAt(0) - '0';
-        curr = head;
-        for (int i=1;i<n;i++){
-            ListNode temp = new ListNode();
-            temp.val = s3.charAt(i) - '0';
-            curr.next = temp;
-            curr = curr.next;
+            if(l1 != null){
+                sum = sum + l1.val;
+                l1=l1.next;
+            }
+            if(l2 != null){
+                sum = sum + l2.val;
+                l2=l2.next;
+            }
+            carry=sum/10;
+            curr.next = new ListNode(sum%10);
+            curr=curr.next;
         }
-        curr.next=null;
-        return head;
+        return head.next;
     }
 }
