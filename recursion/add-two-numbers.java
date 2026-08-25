@@ -24,10 +24,10 @@ class Solution {
             curr=curr.next;
         }
         s2.reverse();
-        int n1 = Integer.parseInt(s1.toString());
-        int n2 = Integer.parseInt(s2.toString());
-        int n3 = n1+n2;
-        StringBuilder s3 = new StringBuilder(Integer.toString(n3));
+        long n1 = Long.parseLong(s1.toString());
+        long n2 = Long.parseLong(s2.toString());
+        long n3 = n1 + n2;
+        StringBuilder s3 = new StringBuilder(Long.toString(n3));
         s3.reverse();
         int n = s3.length();
         ListNode head = new ListNode();
