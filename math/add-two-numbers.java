@@ -8,6 +8,7 @@
  *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
  * }
  */
+import java.math.BigInteger;
 class Solution {
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         StringBuilder s1 = new StringBuilder();
@@ -24,10 +25,11 @@ class Solution {
             curr=curr.next;
         }
         s2.reverse();
-        long n1 = Long.parseLong(s1.toString());
-        long n2 = Long.parseLong(s2.toString());
-        long n3 = n1 + n2;
-        StringBuilder s3 = new StringBuilder(Long.toString(n3));
+        BigInteger n1 = new BigInteger(s1.toString());
+        BigInteger n2 = new BigInteger(s2.toString());
+
+        BigInteger n3 = n1.add(n2);
+        StringBuilder s3 = new StringBuilder(n3.toString());
         s3.reverse();
         int n = s3.length();
         ListNode head = new ListNode();
