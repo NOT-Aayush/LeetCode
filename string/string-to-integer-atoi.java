@@ -12,8 +12,13 @@ class Solution {
             i++;
         }
         while( i < arr.length && arr[i] >= '0' && arr[i] <='9'){
-             ans = ans*10 + (arr[i] - '0');
-             i++;
+            int digit = arr[i] - '0';
+            if (ans > Integer.MAX_VALUE / 10 ||
+                (ans == Integer.MAX_VALUE / 10 && digit > 7)) {
+                return pstv ? Integer.MAX_VALUE : Integer.MIN_VALUE;
+            }
+            ans = ans * 10 + digit;
+            i++;
         }
         return pstv ? ans : -ans;
     }
