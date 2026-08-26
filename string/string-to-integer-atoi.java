@@ -3,6 +3,9 @@ class Solution {
         boolean pstv = true;
         s = s.trim();
         char[] arr = s.toCharArray();
+        if (s.length() == 0) {
+            return 0;
+        }
         int i=0;
         int ans = 0;
         if ( arr[i] == '-'){
