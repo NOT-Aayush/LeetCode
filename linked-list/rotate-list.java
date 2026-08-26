@@ -10,6 +10,9 @@
  */
 class Solution {
     public static ListNode rotate(ListNode head){
+        if (head == null || head.next == null){
+            return head;
+        }
         ListNode prev = null;
         ListNode curr = head;
         while (curr.next!=null){
