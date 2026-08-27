@@ -7,10 +7,8 @@ class Solution {
                 ans*=x;
                 nm--;
             }
-            else{
                 x*=x;
                 nm/=2;
-            }
         }
         if(n<0) ans = (double) 1.0 / ans;
         return ans;
