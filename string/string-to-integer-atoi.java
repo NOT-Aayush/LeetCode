@@ -17,6 +17,8 @@ class Solution {
     }
     public int myAtoi(String s) {
         s = s.trim();
+        if (s.isEmpty())
+            return 0;
         boolean pstv = true;
         int ans = 0;
         if (s.charAt(0) == '-') {
