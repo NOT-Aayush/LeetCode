@@ -1,28 +1,31 @@
 class Solution {
+    static public int recursion(String s,int ans, boolean pstv){
+        if (s.isEmpty()) return ans;
+        int digit = s.charAt(0) - '0';
+        if (digit < 0 || digit > 9) return ans;
+
+        if (pstv) {
+            if ( ans > (Integer.MAX_VALUE - digit)/10) return Integer.MAX_VALUE;
+            ans = ans*10+(digit);
+        }
+        else{
+            if ( ans < (Integer.MIN_VALUE + digit)/10) return Integer.MIN_VALUE;
+            ans = ans*10 -(digit);
+        }
+        s=s.substring(1);
+        return recursion(s,ans,pstv);
+    }
     public int myAtoi(String s) {
-        boolean pstv = true;
         s = s.trim();
-        char[] arr = s.toCharArray();
-        if (s.length() == 0) {
-            return 0;
-        }
-        int i=0;
+        boolean pstv = true;
         int ans = 0;
-        if ( arr[i] == '-'){
+        if (s.charAt(0) == '-') {
             pstv = false;
-            i++;
-        }else if( arr[i] == '+'){
-            i++;
+            s=s.substring(1);
         }
-        while( i < arr.length && arr[i] >= '0' && arr[i] <='9'){
-            int digit = arr[i] - '0';
-            if (ans > Integer.MAX_VALUE / 10 ||
-                (ans == Integer.MAX_VALUE / 10 && digit > 7)) {
-                return pstv ? Integer.MAX_VALUE : Integer.MIN_VALUE;
-            }
-            ans = ans * 10 + digit;
-            i++;
+        else if (s.charAt(0) == '+'){
+            s=s.substring(1);
         }
-        return pstv ? ans : -ans;
+        return recursion(s,ans,pstv);
     }
 }
