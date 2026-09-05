@@ -9,7 +9,7 @@ class Solution {
             max = Math.max(max,nums[i]);
             maxs[i] = max;
         }
-        for (int i=n-1;i>0;i--){
+        for (int i=n-1;i>=0;i--){
             min = Math.min(min,nums[i]);
             mins[i] = min;
         }
