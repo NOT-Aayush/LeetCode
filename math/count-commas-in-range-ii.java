@@ -8,7 +8,8 @@ class Solution {
         //long num = (long) Math.pow(10,len-1);
         for (long i=1 ; i<=inc ; i++){
             long num = (long) Math.pow(10, 3*i);
-            ans +=(n-num+1)*i;
+            long cap = (long) Math.min(n,Math.pow(10,3*(i+1))-1);
+            ans +=(cap-num+1)*i;
         }
         return ans;
     }
